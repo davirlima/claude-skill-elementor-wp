@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: refactor-home-third-party-widgets
+expected_outcome: |
+  A plan.md that replaces third-party widgets with official Elementor/Pro widgets and containers, moves header/footer to Theme Builder, asks for (does not assume) brand fonts/colors/contacts, builds the new home as a new page and archives the old one as a draft, backs up before writing, and validates with desktop/mobile screenshots and Lighthouse accessibility.

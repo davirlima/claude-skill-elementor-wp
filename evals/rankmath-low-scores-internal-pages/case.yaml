@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: rankmath-low-scores-internal-pages
+expected_outcome: |
+  A plan.md that diagnoses empty post_content (pages built outside the Elementor editor) as the cause of 0 words, plans to regenerate post_content from the rendered page, proposes honest content improvements (keyword placement, internal/external links, alt texts, useful sections without invented facts), keeps one consistent SEO title pattern instead of chasing points such as adding numbers, and explains that the score updates after reopening the page in the editor.

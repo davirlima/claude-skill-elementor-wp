@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+evals/results/
+*-workspace/
+media_usage.json
+backup-*/
+.env

@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: animations-blink-and-media-cleanup
+expected_outcome: |
+  A plan.md that diagnoses the animation stylesheets not being enqueued on the live site (Element Caching / cache) and fixes it at the source instead of injecting CSS, verifies animations after the fix, keeps LCP elements unanimated, and plans a cleanup that cross-references media usage across rendered pages, Elementor data and settings, downloads a local backup with a manifest before permanent media deletion, and trashes drafts/templates instead of deleting them.
