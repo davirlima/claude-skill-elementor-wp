@@ -48,6 +48,7 @@ Você não precisa chamar a skill pelo nome. Basta pedir algo sobre um site com 
 - "Otimiza as imagens da home para WebP com nomes bons para SEO."
 - "Coloca animações de entrada sutis nas dobras."
 - "Faz uma limpa nos rascunhos, modelos e mídias que não são usados."
+- "Troca o WhatsApp de aluguel para este número em todo o site, rodapé e chat."
 
 No início de cada projeto, o Claude pergunta o que precisa: endereço do site, fontes e cores da marca, WhatsApp e mensagens de contato, e quais páginas entram no trabalho.
 
@@ -59,7 +60,7 @@ Para trabalhar direto no site, o Claude precisa de acesso. A skill explica cada 
 2. Conecte o **servidor MCP do Elementor** no Claude Code. O Claude te passa o comando pronto.
 3. Se usar **Wordfence**, deixe as senhas de aplicativo permitidas para esse usuário.
 
-A senha nunca é gravada na skill. O Claude a lê das variáveis de ambiente da sua máquina.
+A senha nunca é gravada na skill. O Claude a lê das variáveis de ambiente da sua máquina ou, se elas não existirem, do próprio conector MCP que você já configurou (sem exibir a senha). Você não precisa exportar nada de novo.
 
 ---
 

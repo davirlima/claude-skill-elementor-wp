@@ -26,9 +26,9 @@
 
 ## 5. Header, footer, 404, privacy
 - Header (fixed, rounded card style is common): logo with alt "<Brand> — página inicial", menu in the user's order, primary CTA button; mobile menu = Elementor Pro popup sliding from the side (380px / 86vw, overlay in brand dark at ~55%, close button, prevent scroll, a11y navigation).
-- Footer: logo, tagline, menu, address/phone/e-mail with icons, only social profiles that exist, privacy policy link, secondary CTA link.
+- Footer: logo, tagline, menu, address/phone/e-mail with icons, only social profiles that exist, privacy policy link, secondary CTA link. When the business has a separate line per intent (e.g. rental vs. franchise), list each number with a label ("Rental: …", "Franchise: …") and link each to its own pre-filled message; keep the mobile-menu popup's contact block consistent with the footer.
 - 404 (Theme Builder `error-404`): big number, friendly H1, lead, buttons (home + main section), quick links.
-- Privacy policy page in the same visual standard: sections numbered H2, LGPD-aware content (controller, data collected incl. chat/forms, purposes, legal bases, sharing incl. third-party services, retention, rights, contact). Flag that it needs legal review.
+- Privacy policy page in the same visual standard: sections numbered H2, LGPD-aware content (controller, data collected incl. chat/forms, purposes, legal bases, sharing incl. third-party services, retention, rights, contact). Flag that it needs legal review. The contact line of the policy uses the e-mail only (the user preferred no phone number there); the chat/forms and third-party services the site really uses must appear in "data collected" and "sharing".
 
 ## 6. Third-party widgets pasted by the user (chatbots etc.)
 Install via Custom Code (body end). Before installing, adapt rather than rewrite: brand texts/colors/fonts, links (privacy URL), assets hosted on the client domain (not on another site's staging), z-index, 16px inputs on mobile, focus styles, aria labels, contrast, reset the theme's global button/heading typography inside the widget. Keep the behaviour intact and list every change. Test the flow without submitting real leads.

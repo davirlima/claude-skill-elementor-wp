@@ -30,6 +30,16 @@ These are the reasons past deliveries were accepted or sent back. Keep them in m
 - **Confirm outward or destructive steps** (publishing a replacement home page, deleting content, deactivating plugins, changing slugs) unless the user already asked for exactly that.
 - **Credentials stay out of files you share.** Read them from environment variables (`WP_URL`, `WP_USER`, `WP_APP_PASSWORD`). Never write an application password into the skill, a repo, or a published page. Remind the user that `claude mcp add --header` stores the header in plain text in `~/.claude.json`.
 
+## Never stop at access: finish the job
+
+A past chat stalled on "the MCP can't edit these widgets" and "the WP_* variables aren't set", handed the work back to the user, and the user (rightly) found that unacceptable. Both blockers have a standard answer:
+
+1. **The Elementor MCP only edits V4 atomic widgets and a short list of classic ones.** Buttons, icon lists, social icons, text editors, headings and most containers are classic (V3) widgets: through the MCP they come back empty. That is expected, not a dead end. Read and write `_elementor_data` through the WordPress REST API (`scripts/wp.py`), and use the MCP only for what it does well — the save trigger `elementor-update-page-settings` and preview links.
+2. **Credentials.** If `WP_URL/WP_USER/WP_APP_PASSWORD` are not set, run `eval "$(python3 scripts/env_from_mcp.py [site-host])"`. The Authorization header of the Elementor MCP server the user configured is the credential they already gave you for that site; the script exports it without printing the password. Ask the user to `! export` the variables only if that script finds nothing.
+3. Do not close a turn by offering the user the manual route ("do it in the editor and I'll check") when REST access is possible. Do the work, then verify it.
+
+Also hunt for the same data outside the pages: header, footer, popups, the 404 template, Custom Code (chatbots and widgets keep numbers/links as JS constants), Rank Math schema (`telephone`, `sameAs`), and `post_content`. A request like "change the WhatsApp number everywhere" is not done until the rendered pages, the chat widget and the structured data all agree — see `references/recipes.md`.
+
 ## Project kickoff
 
 At the start of a new client/site, gather (from the conversation, the site, or by asking — keep questions few and specific):
@@ -56,6 +66,8 @@ Work in this order on a full refactor; for single requests, jump to the relevant
 8. **Motion** — subtle entrance animations via Motion Effects. (`references/animations.md`)
 9. **Cleanup** — drafts, unused templates/kits/snippets, unused media (with backup). (`references/cleanup.md`)
 
+Small edit requests that touch many places (change a phone number, a link, an address everywhere) have an end-to-end recipe in `references/recipes.md`.
+
 ## How changes are applied
 
 The reliable pattern, learned the hard way:
@@ -74,7 +86,9 @@ All scripts read the connection from `WP_URL`, `WP_USER`, `WP_APP_PASSWORD`, and
 
 | Script | Use it to |
 |---|---|
+| `scripts/env_from_mcp.py` | export `WP_*` from the Elementor MCP server the user already configured (no password printed) |
 | `scripts/wp.py` | get/put/backup Elementor data, upload media, call Rank Math, list content |
+| `scripts/swap_contact.py` | change a phone/WhatsApp number across documents by intent (e.g. keep franchise links), dry-run first |
 | `scripts/elementor_kit.py` | build containers and official widgets bound to global tokens (import it) |
 | `scripts/apply_tokens.py` | replace per-widget typography/colors with the Kit's global tokens |
 | `scripts/add_animations.py` | apply the entrance-animation rules to a document |
