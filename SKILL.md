@@ -40,6 +40,10 @@ A past chat stalled on "the MCP can't edit these widgets" and "the WP_* variable
 
 Also hunt for the same data outside the pages: header, footer, popups, the 404 template, Custom Code (chatbots and widgets keep numbers/links as JS constants), Rank Math schema (`telephone`, `sameAs`), and `post_content`. A request like "change the WhatsApp number everywhere" is not done until the rendered pages, the chat widget and the structured data all agree — see `references/recipes.md`.
 
+## Setup and offboarding
+
+If the site is not connected yet (no Elementor MCP tools, no `WP_*` access), guide the connection first: the user enables **Elementor → Elementor MCP** in wp-admin, generates the connection prompt there and pastes it into Claude Code; you apply it with `claude mcp add` and never repeat the password. When the project ends, offboard: remove the MCP server, revoke the application password in WordPress, and scrub the local traces with `scripts/scrub_credentials.py`. Full steps, probes and caveats: `references/setup.md`.
+
 ## Project kickoff
 
 At the start of a new client/site, gather (from the conversation, the site, or by asking — keep questions few and specific):
@@ -88,6 +92,7 @@ All scripts read the connection from `WP_URL`, `WP_USER`, `WP_APP_PASSWORD`, and
 |---|---|
 | `scripts/env_from_mcp.py` | export `WP_*` from the Elementor MCP server the user already configured (no password printed) |
 | `scripts/wp.py` | get/put/backup Elementor data, upload media, call Rank Math, list content |
+| `scripts/scrub_credentials.py` | offboarding: find and redact application passwords / Basic headers left in Claude Code history and transcripts (dry run first) |
 | `scripts/swap_contact.py` | change a phone/WhatsApp number across documents by intent (e.g. keep franchise links), dry-run first |
 | `scripts/elementor_kit.py` | build containers and official widgets bound to global tokens (import it) |
 | `scripts/apply_tokens.py` | replace per-widget typography/colors with the Kit's global tokens |

@@ -54,13 +54,16 @@ No início de cada projeto, o Claude pergunta o que precisa: endereço do site, 
 
 ### Para o Claude mexer no site
 
-Para trabalhar direto no site, o Claude precisa de acesso. A skill explica cada passo na hora, mas o resumo é:
+Para trabalhar direto no site, o Claude precisa de acesso. O caminho mais simples:
 
-1. No WordPress, crie uma **senha de aplicativo** para um usuário administrador (Usuários → Perfil → Senhas de aplicativo). O ideal é um usuário só para isso.
-2. Conecte o **servidor MCP do Elementor** no Claude Code. O Claude te passa o comando pronto.
-3. Se usar **Wordfence**, deixe as senhas de aplicativo permitidas para esse usuário.
+1. No WordPress, vá em **Elementor → Elementor MCP** e **ative**. O ideal é usar um usuário administrador só para isso.
+2. Nessa mesma tela, clique para **gerar o prompt de conexão**. Ele traz o endereço, o usuário e uma senha de aplicativo.
+3. Cole esse prompt no Claude Code. O Claude conecta o site para você e pede para reiniciar ou rodar `/mcp`.
+4. Se usar **Wordfence**, deixe as senhas de aplicativo permitidas para esse usuário.
 
-A senha nunca é gravada na skill. O Claude a lê das variáveis de ambiente da sua máquina ou, se elas não existirem, do próprio conector MCP que você já configurou (sem exibir a senha). Você não precisa exportar nada de novo.
+A senha nunca é gravada na skill. O Claude a lê das variáveis de ambiente da sua máquina ou, se elas não existirem, do próprio conector que você já configurou (sem exibir a senha). Você não precisa exportar nada de novo.
+
+**Ao terminar o projeto**, peça "desconecta o site e apaga as credenciais". O Claude remove o conector, apaga as senhas guardadas no histórico local e lembra você de **revogar a senha de aplicativo no WordPress** (Usuários → Perfil → Senhas de aplicativo), que é o que realmente invalida o acesso.
 
 ---
 

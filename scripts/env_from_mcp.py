@@ -46,5 +46,5 @@ for name, s in servers():
     sys.exit(0)
 
 sys.stderr.write('no Elementor MCP server with a Basic Authorization header found — ask the user for WP_URL / WP_USER / '
-                 'application password once (they can `! export` them), then continue.\n')
+                 'application password once (they can `! export` them), or follow references/setup.md to connect the site, then continue.\n')
 sys.exit(1)

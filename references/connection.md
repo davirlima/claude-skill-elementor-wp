@@ -10,6 +10,8 @@
 
 ## 1. Setting up access
 
+> Full setup and offboarding flow (enabling **Elementor → Elementor MCP**, the generated connection prompt, `claude mcp add`, revoking at the end): `references/setup.md`. The notes below are the short version.
+
 The user creates an **application password** for an admin user (Users → Profile → Application Passwords). Basic auth header = `base64("<user>:<app password with spaces>")`.
 
 Elementor MCP server (Elementor ≥ 3.30 / 4.x exposes `/wp-json/elementor/mcp/`). The user adds it to Claude Code — auto mode may block Claude from running this, so suggest the `!` prefix:
